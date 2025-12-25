@@ -3,7 +3,8 @@
                     <div class="d-flex">
                         <!-- LOGO -->
                         <div class="navbar-brand-box">
-                            <a href="index.html" class="logo logo-dark">
+                            <?php $menuConfig = loadMenuConfig(); $role = $_SESSION['role'] ?? null; $dashboardPath = $menuConfig['roles'][$role]['dashboard'] ?? 'index.php'; $dashboardModule = explode('/', trim($dashboardPath, '/'))[0] ?? ''; ?>
+                            <a href="<?= base_url($dashboardPath) ?>" class="logo logo-dark">
                                 <span class="logo-sm">
                                     <img src="<?= base_url('assets/'.$THEME.'/images/logo-sm.svg'); ?>" alt="" height="24">
                                 </span>
@@ -12,7 +13,7 @@
                                 </span>
                             </a>
 
-                            <a href="index.html" class="logo logo-light">
+                            <a href="<?= base_url($dashboardPath) ?>" class="logo logo-light">
                                 <span class="logo-sm">
                                     <img src="<?= base_url('assets/'.$THEME.'/images/logo-sm.svg'); ?>" alt="" height="24">
                                 </span>
