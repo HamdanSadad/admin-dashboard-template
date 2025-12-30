@@ -10,7 +10,7 @@
       <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
           <ul class="navbar-nav">
               <li class="nav-item">
-                  <a class="nav-link active" href="../pages/dashboard.html">
+                  <a class="nav-link <?= function_exists('isActiveModule') && isActiveModule('admin') ? 'active' : '' ?>" href="<?= base_url('admin') ?>">
                       <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                           <i class="ni ni-tv-2 text-dark text-sm opacity-10"></i>
                       </div>
@@ -18,7 +18,7 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link " href="<?= base_url('buku') ?>">
+                  <a class="nav-link <?= function_exists('isActiveModule') && isActiveModule('buku') ? 'active' : '' ?>" href="<?= base_url('buku') ?>">
                       <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                           <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
                       </div>
@@ -27,7 +27,7 @@
 
               </li>
               <li class="nav-item">
-                  <a class="nav-link " href="../pages/billing.html">
+                  <a class="nav-link <?= function_exists('isActiveModule') && isActiveModule('billing') ? 'active' : '' ?>" href="../pages/billing.html">
                       <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                           <i class="ni ni-credit-card text-dark text-sm opacity-10"></i>
                       </div>
@@ -35,7 +35,7 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link " href="../pages/virtual-reality.html">
+                  <a class="nav-link <?= function_exists('isActiveModule') && isActiveModule('virtual-reality') ? 'active' : '' ?>" href="../pages/virtual-reality.html">
                       <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                           <i class="ni ni-app text-dark text-sm opacity-10"></i>
                       </div>
@@ -43,7 +43,7 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link " href="../pages/rtl.html">
+                  <a class="nav-link <?= function_exists('isActiveModule') && isActiveModule('rtl') ? 'active' : '' ?>" href="../pages/rtl.html">
                       <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                           <i class="ni ni-world-2 text-dark text-sm opacity-10"></i>
                       </div>
@@ -61,13 +61,22 @@
                       <span class="nav-link-text ms-1">Profile</span>
                   </a>
               </li>
+              <?php if (session_status() === PHP_SESSION_NONE) session_start(); ?>
               <li class="nav-item">
-                  <a class="nav-link " href="../pages/sign-in.html">
-                      <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                          <i class="ni ni-single-copy-04 text-dark text-sm opacity-10"></i>
-                      </div>
-                      <span class="nav-link-text ms-1">Sign In</span>
-                  </a>
+                  <?php if (isset($_SESSION['user_id'])): ?>
+                      <a class="nav-link p-2" href="<?= base_url('logout.php') ?>">
+                          <div class="w-100 text-center">
+                              <span class="btn btn-danger btn-sm w-100">Logout</span>
+                          </div>
+                      </a>
+                  <?php else: ?>
+                      <a class="nav-link " href="<?= base_url('login.php') ?>">
+                          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                              <i class="ni ni-single-copy-04 text-dark text-sm opacity-10"></i>
+                          </div>
+                          <span class="nav-link-text ms-1">Sign In</span>
+                      </a>
+                  <?php endif; ?>
               </li>
               <li class="nav-item">
                   <a class="nav-link " href="../pages/sign-up.html">

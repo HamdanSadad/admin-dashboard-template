@@ -14,16 +14,18 @@ if (getUserRole() !== 'admin') {
 }
 ?>
 
-<?php include '../views/'.$THEME.'/header.php'; ?>
-<?php include '../views/'.$THEME.'/sidebar.php'; ?>
-<?php include '../views/'.$THEME.'/topnav.php'; ?>
-<?php include '../views/'.$THEME.'/upper_block.php'; ?>
-<?php include '../views/'.$THEME.'/admin_content.php'; ?>
+<?php include '../views/' . $THEME . '/header.php'; ?>
+<?php include '../views/' . $THEME . '/sidebar.php'; ?>
+<?php include '../views/' . $THEME . '/topnav.php'; ?>
+<?php include '../views/' . $THEME . '/upper_block.php'; ?>
+<?php include '../views/' . $THEME . '/admin_content.php'; ?>
 
-            <h2>Welcome, <?php echo ucfirst($_SESSION['role']); ?>!</h2>
-            <p>You are logged in as: <strong><?php echo $_SESSION['username']; ?></strong></p>
+<?php if ($THEME !== 'azia'): ?>
+    <h2>Welcome, <?php echo ucfirst($_SESSION['role']); ?>!</h2>
+    <p>You are logged in as: <strong><?php echo $_SESSION['username']; ?></strong></p>
 
-            <a href="../logout.php" class="btn btn-outline-danger">Logout</a>
+    <a href="../logout.php" class="btn btn-outline-danger">Logout</a>
+<?php endif; ?>
 
-<?php include '../views/'.$THEME.'/lower_block.php'; ?>
-<?php include '../views/'.$THEME.'/footer.php'; ?>
+<?php include '../views/' . $THEME . '/lower_block.php'; ?>
+<?php include '../views/' . $THEME . '/footer.php'; ?>
